@@ -269,6 +269,10 @@ function partial(view, options){
   var root = this.app.get('views') || process.cwd() + '/views'
     , ext = extname(view) || '.' + (this.app.get('view engine')||'ejs')
     , file = lookup(root, view, ext);
+  // console.log('partial',this);
+  // var dir = dirname(name) == '.' ? root : resolve(root,dirname(name));
+  // layout = dirname(lookup(dir, layout, ext))+(path.sep||'/')+basename(layout,ext)+ext;
+
   
   // read view
   var source = fs.readFileSync(file,'utf8');

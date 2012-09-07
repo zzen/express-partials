@@ -43,7 +43,7 @@ app.get('/collection/thing',function(req,res,next){
 })
 
 app.get('/subdir',function(req,res,next){
-  res.render('subdir/index.ejs')
+  res.render('subdir/index.ejs', {list:[{name:'one'},{name:'two'}]})
 })
 
 /* Use `register` to substitute the file extension. */
@@ -256,7 +256,7 @@ describe('app',function(){
         .get('/subdir')
         .end(function(res) {
           res.should.have.status(200);
-          res.body.should.equal('<html><title>subdir layout</title><body><h2>Hello World</h2></body></html>');
+          res.body.should.equal('<html><title>subdir layout</title><body><h2>Hello World</h2><ul><li>one</li><li>two</li></ul></body></html>');
           done();
         })
     })
