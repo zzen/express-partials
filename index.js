@@ -172,7 +172,7 @@ function resolveObjectName(view){
  */
 
 function lookup(root, view, ext){
-  var name = basename(view,ext);
+  var name = dirname(view)+(path.sep || '/')+basename(view,ext);
   // var name = resolveObjectName(view);
 
   // Try _ prefix ex: ./views/_<name>.jade
