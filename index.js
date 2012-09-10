@@ -97,7 +97,7 @@ var register = function(ext,render) {
   if(typeof render === 'string') {
     render = require(render);
   }
-  if(render.render !== null) {
+  if(render.render != null) {
     register[ext] = render.render;
   } else {
     register[ext] = render;
@@ -172,7 +172,8 @@ function resolveObjectName(view){
  */
 
 function lookup(root, view, ext){
-  var name = resolveObjectName(view);
+  var name = basename(view,ext);
+  // var name = resolveObjectName(view);
 
   // Try _ prefix ex: ./views/_<name>.jade
   // taking precedence over the direct path
@@ -283,7 +284,7 @@ function partial(view, options){
         // merge(options, object);
       }
     }
-    return renderer(ext)(source, options);
+    return renderer(ext)(file, options, function() {});
   }
 
   // Collection support
